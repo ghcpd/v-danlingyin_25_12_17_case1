@@ -1,0 +1,10 @@
+{
+  "features": [
+    { "id": 1, "name": "Homepage / Discover Page", "required_files": ["src/pages/HomePage.tsx", "src/components/Hero.tsx", "src/components/PodcastList.tsx"], "implemented": true, "implementation_quality": "good", "notes": "Responsive, featured, categories, trending" },
+    { "id": 2, "name": "Podcast Detail Page", "required_files": ["src/pages/PodcastDetailPage.tsx", "src/components/EpisodeItem.tsx", "src/components/SubscribeButton.tsx"], "implemented": true, "implementation_quality": "good", "notes": "Episodes list, sorting, stats" },
+    { "id": 3, "name": "Global Audio Player", "required_files": ["src/components/GlobalAudioPlayer.tsx", "src/components/ProgressBar.tsx"], "implemented": true, "implementation_quality": "basic", "notes": "Play/pause/seek/volume/prev/next" },
+    { "id": 4, "name": "Search Page", "required_files": ["src/pages/SearchPage.tsx", "src/components/SearchBar.tsx", "src/components/FilterPanel.tsx"], "implemented": true, "implementation_quality": "good", "notes": "Debounced client-side search and filters" },
+    { "id": 5, "name": "Library / Subscriptions", "required_files": ["src/pages/LibraryPage.tsx", "src/context/LibraryContext.tsx"], "implemented": true, "implementation_quality": "good", "notes": "LocalStorage-backed subscriptions, favorites, history" },
+    { "id": 6, "name": "Category Page", "required_files": ["src/pages/CategoryPage.tsx"], "implemented": true, "implementation_quality": "good", "notes": "Reuses PodcastList" }
+  ]
+}
