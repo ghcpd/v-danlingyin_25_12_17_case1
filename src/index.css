@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: #0b1220;
+  --card: #071126;
+  --muted: #94a3b8;
+}
+
+body{
+  @apply bg-gray-50 text-gray-900 font-sans;
+}
+
+a:focus, button:focus, input:focus, [tabindex]:focus {
+  outline: 3px solid rgba(124,58,237,0.25);
+  outline-offset: 2px;
+}
+
+/* Simple container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
