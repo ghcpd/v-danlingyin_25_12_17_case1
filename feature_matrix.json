@@ -1,0 +1,44 @@
+{
+  "features": [
+    {
+      "id": 1,
+      "name": "Homepage / Discover",
+      "required_files": ["src/pages/HomePage.tsx", "src/components/Hero.tsx", "src/components/PodcastList.tsx"],
+      "implemented": true,
+      "implementation_quality": "basic",
+      "notes": "Shows trending, categories, recently added"
+    },
+    {
+      "id": 2,
+      "name": "Podcast Detail",
+      "required_files": ["src/pages/PodcastDetailPage.tsx", "src/components/EpisodeItem.tsx"],
+      "implemented": true,
+      "implementation_quality": "basic",
+      "notes": "Shows episodes and subscribe button"
+    },
+    {
+      "id": 3,
+      "name": "Global Audio Player",
+      "required_files": ["src/components/GlobalAudioPlayer.tsx", "src/context/PlayerContext.tsx"],
+      "implemented": true,
+      "implementation_quality": "basic",
+      "notes": "Play/pause/progress implemented"
+    },
+    {
+      "id": 4,
+      "name": "Search Page",
+      "required_files": ["src/pages/SearchPage.tsx", "src/components/SearchBar.tsx"],
+      "implemented": true,
+      "implementation_quality": "basic",
+      "notes": "Client-side filtering"
+    },
+    {
+      "id": 5,
+      "name": "Library",
+      "required_files": ["src/pages/LibraryPage.tsx", "src/context/LibraryContext.tsx"],
+      "implemented": true,
+      "implementation_quality": "basic",
+      "notes": "Subscriptions and history saved to localStorage"
+    }
+  ]
+}
