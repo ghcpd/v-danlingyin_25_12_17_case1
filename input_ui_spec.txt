@@ -1,0 +1,372 @@
+# Podcast Listening Website - UI Specification
+
+## Project Overview
+Build a modern, responsive podcast listening platform where users can browse, search, and listen to podcasts.
+
+---
+
+## Technical Stack
+- **Frontend Framework**: React 18+ with TypeScript
+- **Styling**: Tailwind CSS
+- **Package Manager**: pnpm
+- **Build Tool**: Vite
+- **Component Library**: Your choice (Shadcn/ui, Headless UI, or custom)
+
+---
+
+## Core Features & Requirements
+
+### 1. Homepage / Discover Page
+**Route**: `/`
+
+**Layout**:
+- Header with logo and navigation
+- Hero section with featured podcast
+- "Trending Now" section (grid of 6-8 podcasts)
+- "Categories" section (pills/tags: Technology, Business, Comedy, Education, Health, etc.)
+- "Recently Added" section (list of latest podcasts)
+
+**Components Needed**:
+- `Header.tsx` - Site navigation
+- `Hero.tsx` - Featured content banner
+- `PodcastCard.tsx` - Reusable podcast card component
+- `CategoryPill.tsx` - Category filter button
+- `PodcastList.tsx` - List/grid container
+
+**Data Structure** (Mock):
+```typescript
+interface Podcast {
+  id: string;
+  title: string;
+  author: string;
+  description: string;
+  coverImage: string;
+  category: string[];
+  episodeCount: number;
+  subscribers: number;
+  rating: number;
+}
+```
+
+---
+
+### 2. Podcast Detail Page
+**Route**: `/podcast/:id`
+
+**Layout**:
+- Podcast header (cover image, title, author, subscribe button)
+- Stats (episodes count, subscribers, rating)
+- About section (description)
+- Episodes list (sortable by date/popularity)
+- Each episode shows:
+  - Episode number & title
+  - Duration
+  - Release date
+  - Play button
+  - Brief description
+
+**Components Needed**:
+- `PodcastHeader.tsx`
+- `EpisodeItem.tsx`
+- `PlayButton.tsx`
+- `SubscribeButton.tsx`
+
+**Data Structure**:
+```typescript
+interface Episode {
+  id: string;
+  podcastId: string;
+  title: string;
+  description: string;
+  duration: number; // in seconds
+  releaseDate: string;
+  audioUrl: string;
+  episodeNumber: number;
+  thumbnail?: string;
+}
+```
+
+---
+
+### 3. Audio Player (Global Component)
+**Position**: Fixed at bottom of screen (like Spotify)
+
+**Features**:
+- Play/Pause button
+- Episode title & podcast name
+- Progress bar (clickable to seek)
+- Current time / Total duration
+- Volume control
+- Previous/Next episode buttons (if playlist exists)
+- Minimize/Expand player
+
+**Components Needed**:
+- `GlobalAudioPlayer.tsx`
+- `ProgressBar.tsx`
+- `VolumeControl.tsx`
+
+**State Management**:
+- Use Context API or Zustand to manage:
+  - Currently playing episode
+  - Play/pause state
+  - Current time
+  - Volume level
+  - Playlist queue
+
+---
+
+### 4. Search Page
+**Route**: `/search`
+
+**Layout**:
+- Search input (with debounce)
+- Filter options:
+  - By category
+  - By duration
+  - By rating
+- Results display (grid of PodcastCards)
+- "No results" state
+
+**Components Needed**:
+- `SearchBar.tsx`
+- `FilterPanel.tsx`
+- `SearchResults.tsx`
+
+**Functionality**:
+- Real-time search (client-side filtering from mock data)
+- Multi-filter support
+- Sort by: Relevance, Rating, Recent
+
+---
+
+### 5. My Library / Subscriptions Page
+**Route**: `/library`
+
+**Layout**:
+- Tabs: "Subscribed Podcasts" | "Favorites" | "History"
+- Grid of subscribed podcasts
+- Empty state if no subscriptions
+
+**Components Needed**:
+- `LibraryTabs.tsx`
+- `EmptyState.tsx`
+
+**Local Storage**:
+- Save subscribed podcasts to localStorage
+- Save listening history
+- Save favorites
+
+---
+
+### 6. Category Page
+**Route**: `/category/:categoryName`
+
+**Layout**:
+- Category title & description
+- Filter/sort options
+- Grid of podcasts in that category
+
+**Components Needed**:
+- Reuse `PodcastCard.tsx` and `PodcastList.tsx`
+
+---
+
+## Responsive Design Requirements
+
+### Mobile (< 768px)
+- Single column layout
+- Hamburger menu for navigation
+- Simplified player controls
+- Touch-friendly buttons (min 44px)
+
+### Tablet (768px - 1024px)
+- 2-column grid for podcasts
+- Collapsible sidebar
+
+### Desktop (> 1024px)
+- 3-4 column grid
+- Full navigation visible
+- Expanded player with all controls
+
+---
+
+## Accessibility Requirements
+
+1. **Keyboard Navigation**:
+   - All interactive elements accessible via Tab
+   - Play/pause with Spacebar
+   - Skip with Arrow keys
+
+2. **ARIA Labels**:
+   - `aria-label` on all icon buttons
+   - `role="navigation"` on nav
+   - `role="main"` on main content
+   - `aria-live` for player state changes
+
+3. **Color Contrast**:
+   - WCAG AA compliant (4.5:1 for normal text)
+
+4. **Focus States**:
+   - Visible focus indicators on all interactive elements
+
+---
+
+## Mock Data Requirements
+
+Create at least:
+- **12 podcasts** across different categories
+- **5-10 episodes per podcast**
+- Realistic data (titles, descriptions, durations)
+- Placeholder images (use picsum.photos or similar)
+
+Sample categories: Technology, Business, True Crime, Comedy, Education, Health & Fitness, News, Sports, Science, History
+
+---
+
+## State Management
+
+Use **React Context API** for:
+- Audio player state (currently playing, queue)
+- User library (subscriptions, favorites, history)
+- Theme (optional: light/dark mode)
+
+Or use **Zustand** if you prefer a more structured approach.
+
+---
+
+## Routing
+
+Use **React Router v6**:
+- `/` - Homepage
+- `/podcast/:id` - Podcast detail
+- `/search` - Search page
+- `/library` - User library
+- `/category/:name` - Category page
+
+---
+
+## TypeScript Requirements
+
+1. **Strict Mode**: Enable in `tsconfig.json`
+2. **Type All Components**: Props interfaces for every component
+3. **Type All State**: No implicit `any`
+4. **Utility Types**: Use `Partial`, `Pick`, `Omit` where appropriate
+5. **Enums**: For categories, episode status, etc.
+
+---
+
+## Tailwind Configuration
+
+Customize `tailwind.config.js`:
+- Brand colors (primary, secondary, accent)
+- Custom font (e.g., Inter, Poppins)
+- Custom breakpoints if needed
+- Animation for player controls
+
+---
+
+## Performance Optimizations
+
+1. **Lazy Loading**:
+   - Route-based code splitting
+   - Lazy load images
+
+2. **Memoization**:
+   - Use `React.memo` for PodcastCard
+   - Use `useMemo` for filtered/sorted lists
+
+3. **Virtualization**:
+   - Optional: use `react-window` for long episode lists
+
+---
+
+## Additional Features (Nice to Have)
+
+- [ ] Dark mode toggle
+- [ ] Share podcast/episode button
+- [ ] Playback speed control (0.5x, 1x, 1.5x, 2x)
+- [ ] 15s forward/backward skip
+- [ ] Download episode (mock)
+- [ ] Sleep timer
+- [ ] Playlist creation
+- [ ] Podcast recommendations
+
+---
+
+## File Structure Expected
+
+```
+podcast-app/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── components/
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── PodcastCard.tsx
+│   │   ├── EpisodeItem.tsx
+│   │   ├── GlobalAudioPlayer.tsx
+│   │   ├── ProgressBar.tsx
+│   │   ├── VolumeControl.tsx
+│   │   ├── SearchBar.tsx
+│   │   ├── FilterPanel.tsx
+│   │   ├── CategoryPill.tsx
+│   │   └── EmptyState.tsx
+│   ├── pages/
+│   │   ├── HomePage.tsx
+│   │   ├── PodcastDetailPage.tsx
+│   │   ├── SearchPage.tsx
+│   │   ├── LibraryPage.tsx
+│   │   └── CategoryPage.tsx
+│   ├── hooks/
+│   │   ├── useAudioPlayer.ts
+│   │   ├── useLocalStorage.ts
+│   │   └── useDebounce.ts
+│   ├── context/
+│   │   ├── PlayerContext.tsx
+│   │   └── LibraryContext.tsx
+│   ├── types/
+│   │   └── index.ts
+│   ├── data/
+│   │   └── mockPodcasts.ts
+│   ├── utils/
+│   │   ├── formatDuration.ts
+│   │   └── formatDate.ts
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── index.html
+├── package.json
+├── tsconfig.json
+├── tailwind.config.js
+├── vite.config.ts
+└── README.md
+```
+
+---
+
+## Success Criteria
+
+The application is considered complete when:
+
+1. ✅ All pages render without errors
+2. ✅ Routing works correctly
+3. ✅ Audio player can play/pause/seek
+4. ✅ Search functionality works
+5. ✅ Subscribe/Favorite features work (with localStorage)
+6. ✅ Responsive on mobile/tablet/desktop
+7. ✅ TypeScript compiles with no errors in strict mode
+8. ✅ Tailwind classes are properly applied
+9. ✅ Basic accessibility features implemented
+10. ✅ Project builds successfully with `pnpm build`
+
+---
+
+## Notes
+
+- Use placeholder audio files (you can use free samples from freesound.org)
+- Images can be generated via https://picsum.photos/
+- Focus on UI/UX quality and code organization
+- Make it look modern and professional
+- Add loading states and error handling
+- Include README with setup instructions

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-white text-gray-800 antialiased font-sans;
+}
+
+:focus {
+  outline: 2px solid theme('colors.primary');
+  outline-offset: 2px;
+}
