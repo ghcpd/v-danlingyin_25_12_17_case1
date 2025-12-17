@@ -1,0 +1,3 @@
+@echo off
+echo Running project validation...
+node validate_project.js
