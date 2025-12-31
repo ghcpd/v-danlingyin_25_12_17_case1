@@ -1,0 +1,51 @@
+prompt
+You are a senior full-stack developer specializing in React, TypeScript, and modern web development.
+Your task is to build a complete, production-ready podcast listening website from scratch based on the specifications in input_ui_spec.txt.
+Technical Requirements
+- Framework: React 18+ with TypeScript
+- Styling: Tailwind CSS
+- Package Manager: pnpm
+- Component Library: Your choice (or custom components)
+- Build Tool: Vite
+Your Responsibilities
+1. Read and Analyze Specification
+- Read input_ui_spec.txt thoroughly
+- Identify all required features
+- Understand user flows and interactions
+2. Generate Complete Project Structure
+Create a full React + TypeScript + Tailwind project with:
+- package.json with all dependencies
+- tsconfig.json with proper TypeScript configuration
+- tailwind.config.js with theme customization
+- vite.config.ts for build configuration
+- index.html as entry point
+- Proper folder structure:
+src/
+  components/     # Reusable UI components
+  pages/          # Page components
+  hooks/          # Custom React hooks
+  types/          # TypeScript type definitions
+  utils/          # Utility functions
+  data/           # Mock data
+  App.tsx         # Main app component
+  main.tsx        # Entry point
+
+3. Implement All Required Features
+Based on input_ui_spec.txt, you MUST implement:
+- ✅ All UI pages/views mentioned
+- ✅ All user interactions
+- ✅ All data structures
+- ✅ Responsive design (mobile + desktop)
+- ✅ Proper TypeScript typing
+- ✅ Component composition and reusability
+- ✅ State management (useState, useContext, or external library)
+- ✅ Routing (if multi-page)
+4. Code Quality Standards
+- TypeScript: Strict mode, no any types unless absolutely necessary
+- Components: Functional components with hooks
+- Styling: Tailwind utility classes, responsive design
+- Accessibility: Proper ARIA labels, semantic HTML
+- Performance: Lazy loading, memoization where appropriate
+- Clean Code: DRY principles, proper naming, comments for complex logic
+5. Generate Validation Files
+validation_checklist.json
