@@ -49,3 +49,159 @@ Based on input_ui_spec.txt, you MUST implement:
 - Clean Code: DRY principles, proper naming, comments for complex logic
 5. Generate Validation Files
 validation_checklist.json
+Create a comprehensive checklist:
+{
+  "project_setup": {
+    "has_package_json": false,
+    "has_tsconfig": false,
+    "has_tailwind_config": false,
+    "has_vite_config": false,
+    "dependencies_complete": false
+  },
+  "folder_structure": {
+    "has_components_folder": false,
+    "has_pages_folder": false,
+    "has_types_folder": false,
+    "has_utils_folder": false,
+    "has_data_folder": false
+  },
+  "features": {
+    "feature_1_implemented": false,
+    "feature_2_implemented": false,
+    // ... list all features from spec
+  },
+  "code_quality": {
+    "typescript_strict_mode": false,
+    "no_any_types": false,
+    "components_typed": false,
+    "responsive_design": false,
+    "accessibility_features": false
+  },
+  "completeness_score": 0
+}
+
+feature_matrix.json
+Map spec requirements to implementation:
+{
+  "features": [
+    {
+      "id": 1,
+      "name": "Feature from spec",
+      "required_files": ["src/components/X.tsx", "src/pages/Y.tsx"],
+      "implemented": false,
+      "implementation_quality": "N/A",
+      "notes": ""
+    }
+  ]
+}
+
+6. Generate Test Scripts
+validate_project.js
+A Node.js script that:
+- Checks all required files exist
+- Validates package.json dependencies
+- Parses TypeScript files for type errors
+- Checks for Tailwind classes usage
+- Scans for accessibility attributes
+- Validates component structure
+- Generates a validation report
+run_validation.sh (Linux/macOS)
+#!/bin/bash
+echo "Running project validation..."
+node validate_project.js
+
+run_validation.bat (Windows)
+@echo off
+echo Running project validation...
+node validate_project.js
+
+test_runner.js
+Automated test runner that:
+- Runs validation script
+- Checks build success (pnpm build)
+- Checks TypeScript compilation
+- Generates pass/fail report with scores
+- Logs to logs/validation_run.log
+7. Generate README.md
+Must include:
+- Project overview
+- Tech stack
+- Installation instructions (pnpm install)
+- Development server (pnpm dev)
+- Build instructions (pnpm build)
+- Project structure explanation
+- Features implemented
+- How to run validation tests
+- Known limitations (if any)
+8. Generate Evaluation Report
+evaluation_report.json
+{
+  "metadata": {
+    "test_date": "ISO timestamp",
+    "spec_file": "input_ui_spec.txt",
+    "agent_model": "model_name"
+  },
+  "scores": {
+    "completeness": 0,
+    "code_quality": 0,
+    "typescript_usage": 0,
+    "tailwind_usage": 0,
+    "responsiveness": 0,
+    "accessibility": 0,
+    "overall_score": 0
+  },
+  "features_implemented": [],
+  "features_missing": [],
+  "files_generated": [],
+  "validation_status": "PASS/FAIL",
+  "notes": ""
+}
+
+--------------------------------------------------------------------------------
+📌 Strict Rules for the Agent
+MUST DO:
+- ✅ Read entire input_ui_spec.txt before starting
+- ✅ Generate ALL files for a working project
+- ✅ Use TypeScript strictly (no loose typing)
+- ✅ Implement ALL features from specification
+- ✅ Create responsive, accessible UI
+- ✅ Include mock data if needed
+- ✅ Ensure pnpm install && pnpm dev works
+- ✅ Generate all validation files
+MUST NOT:
+- ❌ Skip features mentioned in spec
+- ❌ Use JavaScript instead of TypeScript
+- ❌ Ignore responsive design
+- ❌ Create incomplete components
+- ❌ Hallucinate features not in spec
+- ❌ Use any type excessively
+- ❌ Forget configuration files
+- ❌ Skip validation scripts
+--------------------------------------------------------------------------------
+Deliverables Checklist
+ Complete React + TS + Tailwind project
+ package.json with all dependencies
+ Configuration files (tsconfig, tailwind, vite)
+ All components from spec
+ Mock data (if applicable)
+ validation_checklist.json
+ feature_matrix.json
+ validate_project.js
+ run_validation.sh / run_validation.bat
+ test_runner.js
+ README.md
+ evaluation_report.json
+ logs/ folder with test results
+--------------------------------------------------------------------------------
+Success Criteria
+The agent passes if:
+1.✅ All files compile without errors
+2.✅ pnpm install succeeds
+3.✅ pnpm dev runs without errors
+4.✅ pnpm build completes successfully
+5.✅ Validation script returns >80% completeness
+6.✅ All spec features are implemented
+7.✅ TypeScript strict mode enabled
+8.✅ Responsive design implemented
+9.✅ No critical accessibility issues
+10.✅ Overall evaluation score >75/100
